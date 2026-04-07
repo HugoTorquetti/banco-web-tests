@@ -13,4 +13,24 @@ describe('Login', () => {
     //Asserts
     cy.contains('h4', 'Realizar Transferência').should('be.visible')
   })
+
+
+  it('Login com dados inválidos deve apresentar mensagem de erro', () => {
+    //Arrange
+    cy.visit('http://localhost:4000')
+    
+    //Actions
+    cy.get('#username')
+      .click()            
+      .type('julio.lima') 
+    cy.get('#senha').click().type('654321')
+    cy.contains('button', 'Entrar').click() 
+    /*A forma de selecionar o botão de entrar para o clique 
+    pode ser feita assim, pois o código fica mais descritivo*/
+
+    //Asserts
+    cy.get('.toast')
+      .should('be.visible')
+      .should('have.text', 'Erro no login. Tente novamente.')
+  })
 })
