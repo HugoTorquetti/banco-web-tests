@@ -1,7 +1,8 @@
 describe('Login', () => {
   beforeEach(() => {
     //Arrange
-    cy.visit('http://localhost:4000')  
+    cy.visit('http://localhost:4000')
+    cy.screenshot('ao-abrir-a-pagina-de-login')
   });
 
   it('Login com dados válidos deve permitir entrada no sistema', () => {
@@ -10,7 +11,9 @@ describe('Login', () => {
       .click()            //passando de 80 caracteres, é recomendado quebrar a linha para melhorar a 
       .type('julio.lima') // legibilidade do código, deixando cada comando em uma linha e identtado dessa forma
     cy.get('#senha').click().type('123456')
+    cy.screenshot('preenchendo-os-campos-de-login')
     cy.get('#login-section > .btn').click()
+    cy.screenshot('após-clicar-no-botão-entrar')
 
     //Asserts
     cy.contains('h4', 'Realizar Transferência').should('be.visible')
