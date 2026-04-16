@@ -1,7 +1,10 @@
 describe('Login', () => {
   beforeEach(() => {
     //Arrange
-    cy.visit('http://localhost:4000')
+    //cy.visit(Cypress.env('URL')) - Esse comando ficou obsoleto e o cypress não usa mais. A nova forma de uso é com o comando nas linhas 5, 6 e 7.
+    cy.env(['URL']).then(({ URL }) => {
+      cy.visit(URL)
+    })
     cy.screenshot('ao-abrir-a-pagina-de-login')
   });
 
