@@ -15,3 +15,11 @@ Cypress.Commands.add('fazerLoginComCredenciaisInvalidas', () => {
     })
     cy.contains('button', 'Entrar').click()
 });
+
+Cypress.Commands.add('fazerLoginComCredenciaisAusentes', () => {
+    cy.fixture('credenciais').then((credenciais) => {
+      cy.get('#username').click().type(credenciais.ausente.usuario) 
+      cy.get('#senha').click().type(credenciais.ausente.senha)
+    });
+    cy.contains('button', 'Entrar').click()
+  });  
