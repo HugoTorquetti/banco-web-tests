@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cypress run",
     "headed": "cypress run --headed",
-    "open": "cypress open"
+    "cy": "cypress open"
   },
   "repository": {
     "type": "git",
